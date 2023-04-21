@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
+@font-face {
+  font-family: "Outfit";
+  src: url(../assets/challenges/qr-code-component/assets/Outfit-VariableFont_wght.ttf);
+}
 
 .font-outfit {
   font-family: "Outfit", sans-serif;
