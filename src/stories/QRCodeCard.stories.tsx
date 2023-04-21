@@ -34,7 +34,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    imageSrc: "/images/challenges/qr-code-component/image-qr-code.png",
+    imageSrc: "/images/challenges/qr-code-component/assets/image-qr-code.png",
     title: "Improve your front-end skills by building projects",
     subtitle:
       "Scan the QR code to visit Frontend Mentor and take your coding skills to the next level",
