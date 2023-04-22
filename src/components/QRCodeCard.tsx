@@ -1,4 +1,10 @@
-import { animated, useChain, useSpring, useSpringRef } from "@react-spring/web";
+import {
+  animated,
+  useChain,
+  useReducedMotion,
+  useSpring,
+  useSpringRef,
+} from "@react-spring/web";
 
 import classes from "./QRCodeCard.module.css";
 
@@ -13,6 +19,8 @@ export default function QRCodeCard({
   title,
   subtitle,
 }: QRCodeCardProps) {
+  const _reducedMotion = useReducedMotion();
+
   const containerAnimationRef = useSpringRef();
   const cardContainerProps = useSpring({
     ref: containerAnimationRef,
