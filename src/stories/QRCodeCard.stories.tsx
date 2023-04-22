@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import QRCodeCard from "../components/QRCodeCard";
 
 import imageSrc from "../assets/challenges/qr-code-component/assets/image-qr-code.png";
+import QRCodeCard from "../components/QRCodeCard";
 
 const meta = {
   title: "Challenge/QRCodeCard",
