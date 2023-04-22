@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import imageSrc from "../assets/challenges/qr-code-component/assets/image-qr-code.png";
-import QRCodeCard from "../components/QRCodeCard";
+import CommentSection from "../components/CommentSection";
 
 const meta = {
-  title: "Challenge/QRCodeCard",
-  component: QRCodeCard,
+  title: "Challenge/CommentSection",
+  component: CommentSection,
   // tags: ["autodocs"],
   argTypes: {},
   parameters: {
     layout: "centered",
+
     backgrounds: {
       default: "gray_bg",
       values: [
         {
           name: "gray_bg",
-          value: "hsl(223,19%,93%)",
+          value: "hsl(212,45%,89%)",
         },
       ],
     },
@@ -38,16 +38,11 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof QRCodeCard>;
+} satisfies Meta<typeof CommentSection>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    imageSrc,
-    title: "Improve your front-end skills by building projects",
-    subtitle:
-      "Scan the QR code to visit Frontend Mentor and take your coding skills to the next level",
-  },
+  args: {},
 };

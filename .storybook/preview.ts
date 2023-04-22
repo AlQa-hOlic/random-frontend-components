@@ -7,7 +7,7 @@ const preview: Preview = {
     // layout: "fullscreen",
     layout: "centered",
     actions: { argTypesRegex: "^on[A-Z].*" },
-    backgrounds: { disable: true },
+    // backgrounds: { disable: true },
     controls: {
       matchers: {
         color: /(background|color)$/i,
