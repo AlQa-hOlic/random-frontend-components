@@ -5,7 +5,7 @@ import { ReactComponent as ReplyIcon } from "../../assets/challenges/comment-sec
 function ReplyButton({ className = "" }: { className?: string }) {
   return (
     <button
-      className={`flex select-none items-center space-x-1 rounded p-2 focus:bg-[hsl(239,57%,85%)] focus:outline-none focus:ring-2 focus:ring-[hsl(238,40%,52%)] ${className}`}
+      className={`flex select-none items-center space-x-1 rounded p-2 focus:bg-[hsl(239,57%,85%)] focus:outline-none focus:ring-1 focus:ring-[hsla(238,40%,52%,0.5)] ${className}`}
     >
       <ReplyIcon className="w-3 text-[hsl(238,40%,52%)]" />
       <span className="text-sm font-semibold text-[hsl(238,40%,52%)]">
@@ -34,6 +34,7 @@ export default function CommentCard({
   score,
   content,
   createdAt,
+  showYouBadge = false,
 }: {
   id: string;
   user: {
@@ -43,6 +44,7 @@ export default function CommentCard({
   score: number;
   content: string;
   createdAt: string;
+  showYouBadge: boolean;
   onReplyClicked?: (commentId: string) => void;
   onScoreChange?: (
     commentId: string,
@@ -50,7 +52,7 @@ export default function CommentCard({
   ) => void;
 }) {
   return (
-    <div className="flex max-w-[40rem] flex-col-reverse items-start rounded-lg bg-white p-5 md:flex-row md:space-x-5">
+    <div className="flex flex-col-reverse items-start rounded-lg bg-white p-5 md:flex-row md:space-x-5">
       <div className="mt-3 flex w-full justify-between md:mt-0 md:w-auto">
         <ScoreInput score={score} />
         <ReplyButton className="md:hidden" />
@@ -65,7 +67,13 @@ export default function CommentCard({
             />
             <span className="select-all text-sm font-bold text-gray-700">
               {user.username}
+              {showYouBadge && (
+                <span className="ml-2 rounded bg-[hsl(238,40%,52%)] px-1 py-[0.1rem] text-xs text-white">
+                  you
+                </span>
+              )}
             </span>
+
             <span className="text-sm text-[hsl(211,10%,45%)]">{createdAt}</span>
           </div>
           <ReplyButton className="hidden md:flex" />
