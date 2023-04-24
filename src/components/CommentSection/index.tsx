@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import CommentCard from "./CommentCard";
 import classes from "./CommentSection.module.css";
 
@@ -32,11 +34,13 @@ export default function CommentSection({
   currentUserImg,
   comments,
 }: CommentSectionProps) {
+  const [commentContent, setCommentContent] = useState("");
+
   return (
-    <section className={`max-w-[40rem] ${classes["font-rubik"]}`}>
+    <section className={`max-w-[40rem] space-y-3 ${classes["font-rubik"]}`}>
       <div className="flex flex-col space-y-3">
         {comments.map((comment) => (
-          <div key={comment.id}>
+          <div key={comment.id} className="space-y-3">
             <CommentCard
               id={comment.id}
               user={{
@@ -46,10 +50,12 @@ export default function CommentSection({
               score={comment.score}
               createdAt={comment.createdAt}
               content={comment.content}
-              showYouBadge={comment.user.username === currentUser}
+              isOwner={comment.user.username === currentUser}
+              currentUser={currentUser}
+              currentUserImg={currentUserImg}
             />
             {comment.replies.length > 0 && (
-              <div className="flex py-3">
+              <div className="flex">
                 <div className="mx-3 my-1 border border-[hsl(211,10%,45%)] border-opacity-20 md:mx-8"></div>
                 <div className="flex flex-col space-y-3">
                   {comment.replies.map((reply) => (
@@ -63,7 +69,10 @@ export default function CommentSection({
                       score={reply.score}
                       createdAt={reply.createdAt}
                       content={reply.content}
-                      showYouBadge={reply.user.username === currentUser}
+                      isOwner={reply.user.username === currentUser}
+                      replyingTo={reply.replyingTo}
+                      currentUser={currentUser}
+                      currentUserImg={currentUserImg}
                     />
                   ))}
                 </div>
@@ -72,7 +81,7 @@ export default function CommentSection({
           </div>
         ))}
       </div>
-      <div className="flex flex-row items-start space-x-3 rounded-lg bg-white p-4 py-6">
+      <div className="flex flex-row items-start space-x-3 rounded-lg bg-white p-4">
         <img
           className="w-6"
           src={currentUserImg}
@@ -81,8 +90,10 @@ export default function CommentSection({
         <div className="flex grow flex-col items-start gap-3 md:flex-row">
           <textarea
             placeholder="Add a comment"
-            className="w-full grow rounded-lg border border-[hsl(211,10%,45%)] border-opacity-20 px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[hsla(238,40%,52%,0.5)]"
+            className="w-full grow rounded-lg border border-[hsl(211,10%,45%)] border-opacity-20 px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-[hsla(238,40%,52%,0.5)]"
             rows={3}
+            value={commentContent}
+            onChange={(e) => setCommentContent(e.target.value)}
           ></textarea>
           <button className=" select-none rounded bg-[hsla(238,40%,52%)] px-3 py-2 text-sm uppercase text-white focus:outline-none focus:ring-1 focus:ring-[hsla(238,40%,52%,0.5)]">
             Submit
